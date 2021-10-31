@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    <data>-->
+<!--        <record id="enter_data" model="dental.clinic">-->
+<!--            <field name="seq_no">PATIENT_05</field>-->
+<!--            <field name="prefix">Mr</field>-->
+<!--            <field name="name">New Data</field>-->
+<!--            <field name="email">new@gmail</field>-->
+<!--            <field name="phone">123456</field>-->
+<!--            <field name="age">20</field>-->
+<!--            <field name="location">BBSR</field>-->
+<!--            <field name="gender">male</field>-->
+<!--        </record>-->
+<!--    </data>-->
+</odoo>

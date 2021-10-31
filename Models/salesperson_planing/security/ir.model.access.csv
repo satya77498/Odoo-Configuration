@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_salesperson_planing,access_salesperson_planing,model_salesperson_planing,,1,1,1,1
+access_salesperson_location,access_salesperson_location,model_salesperson_location,,1,1,1,1
+access_salesperson_role,access_salesperson_role,model_salesperson_role,,1,1,1,1
+access_salesperson_employee,access_salesperson_employee,model_salesperson_employee,,1,1,1,1

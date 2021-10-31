@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="dental_clinic_tree_view" model="ir.ui.view">
+            <field name="name">dental.clinic.tree</field>
+            <field name="model">dental.clinic</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="prefix"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="age" sum="Total:"/>
+                    <field name="appointment_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="dental_clinic_search_view" model="ir.ui.view">
+            <field name="name">dental.clinic.search</field>
+            <field name="model">dental.clinic</field>
+            <field name="arch" type="xml">
+                <search string="Search Hear">
+                    <field name="seq_no" filter_domain="[('seq_no','ilike',self)]"/>
+<!--                    <field name="name" filter_domain="[('name','ilike',self)]"/>-->
+                </search>
+            </field>
+        </record>
+
+
+        <record id="dental_clinic_kanban_view" model="ir.ui.view">
+            <field name="name">dental.clinic.kanban</field>
+            <field name="model">dental.clinic</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            <field name="upload_image" widget="image"/>
+                                        </li>
+                                        <li>
+                                            Name:
+                                            <field name="name"/>
+                                        </li>
+                                        <li>
+                                            Patient ID:
+                                            <field name="seq_no"/>
+                                        </li>
+                                        <li>
+                                            Age:
+                                            <field name="age"/>
+                                        </li>
+                                        <li>
+                                            Appointment Date:
+                                            <field name="appointment_date"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="dental_clinic_form_view" model="ir.ui.view">
+            <field name="name">dental.clinic.form</field>
+            <field name="model">dental.clinic</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" type="object" string="Confirm" class="oe_highlight"/>
+                        <button name="action_cancel" type="object" string="Cancel" class="oe_highlight"/>
+<!--                        <button name="%(dental_clinic.reschedule_appointment_wizard)d" type="action" string="Reschedule Appointment" class="oe_highlight"/>-->
+
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <!--                        Smart Button-->
+                        <div class="oe_button_box" name="button_box">
+                            <button name="meeting" type="object" class="oe_stat_button" icon="fa-calendar">
+                                <field string="Meeting" name="doc_count" widget="statinfo"/>
+                            </button>
+                            <button name="feedback" type="object" class="oe_stat_button" icon="fa-usd">
+                                <field string="Feedback" name="doc_count2" widget="statinfo"/>
+                            </button>
+<!--                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">-->
+<!--                                <field string="Active" name="active" widget="boolean_button" options="{&quot;terminology;: &quot;archive&quot;}"/>-->
+<!--                            </button>-->
+                        </div>
+                        <!--                        ___Smart Button___-->
+
+
+                        <div class="oe_title">
+                            <h1>
+                                <field name="seq_no" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="upload_image" widget="image"/>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="prefix"/>
+                                    <field name="name"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                </group>
+                            </group>
+
+
+                            <group>
+                                <field name="age"/>
+                                <field name="gender"/>
+                            </group>
+
+                            <group>
+                                <field name="location"/>
+                                <field name="appointment_date"/>
+                            </group>
+
+                            <group>
+                                <field name="notes" widtht="10"/>
+                            </group>
+
+                        </group>
+
+                        <notebook>
+                            <page string="Other Details" name="other details">
+                                <group>
+                                    <field name="dental_clinic_notepad" widget="selection_and_note_one2many" nolabel="1">
+                                        <tree editable= "bottom">
+                                            <field name="dental_clinic_ids" invisible="1"/>
+                                            <field name="issues" widtht="5"/>
+                                            <field name="xyz" widtht="5"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <group>
+                                                    <field name="issues"/>
+                                                </group>
+                                                <group>
+                                                    <field name="xyz"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Complain" name="complain">
+                            </page>
+                        </notebook>
+                    </sheet>
+<!--                    <div class="oe_chatter">-->
+<!--                        <field name="message_follower_ids" widget="mail_follower"/>-->
+<!--                        <field name="activity_ids" widget="mail_activity"/>-->
+<!--                        <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>-->
+<!--                    </div>-->
+                </form>
+            </field>
+        </record>
+
+        <record id="dental_clinic_action" model="ir.actions.act_window">
+            <field name="name">Dental Clinic</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dental.clinic</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No unavailable list found.
+                </p>
+                <p>
+                    Once the list get's started, you can review and compare them.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="dental_clinic_root_menu" name="Dental Clinic" sequence="2"
+                  web_icon="dental_clinic,static/description/icon.png"/>
+
+        <menuitem id="dental_clinic_sub_menu" name="Dashboard" parent="dental_clinic_root_menu" sequence="1"
+                  action="dental_clinic_action"/>
+    </data>
+</odoo>

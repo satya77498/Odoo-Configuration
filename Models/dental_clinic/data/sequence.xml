@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="dental_clinic_seq" model="ir.sequence">
+            <field name="name">Dental Clinic Sequence</field>
+            <field name="code">dental.clinic.seq</field>
+            <field name="prefix">PATIENT_</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

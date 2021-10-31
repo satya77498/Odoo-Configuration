@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="conversion_unit_tree_view" model="ir.ui.view">
+            <field name="name">conversion.unit.tree</field>
+            <field name="model">conversion.unit</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="conversion_unit"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="conversion_unit_kanban_view" model="ir.ui.view">
+            <field name="name">conversion.unit.kanban</field>
+            <field name="model">conversion.unit</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            Conversion Unit:
+                                            <field name="conversion_unit"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="conversion_unit_form_view" model="ir.ui.view">
+            <field name="name">conversion.unit.form</field>
+            <field name="model">conversion.unit</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="conversion_unit"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_conversion_unit" model="ir.actions.act_window">
+            <field name="name">Conversion Unit</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">conversion.unit</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No unavailable list found.
+                </p>
+                <p>
+                    Once the list get's started, you can review and compare them.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="unit_of_conversion" action="action_conversion_unit" name="Conversion Unit" parent="stock.product_uom_menu" sequence="36"/>
+
+
+    </data>
+</odoo>

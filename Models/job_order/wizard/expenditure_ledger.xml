@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_expenditure_ledger_excel_form_extended1" model="ir.ui.view">
+            <field name="name">Expenditure_LedgerExcelExtended1</field>
+            <field name="model">expenditure.ledger.excel.extended1</field>
+            <field name="arch" type="xml">
+                <form string="Excel Report file">
+                    <group>
+                        <field name="excel_file" readonly="1" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                    <footer>
+                        <button string="Cancel" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_expenditure_ledger_excel_form1" model="ir.actions.act_window">
+            <field name="name">Report Excel</field>
+            <field name="view_id" ref="view_expenditure_ledger_excel_form_extended1"/>
+            <field name="view_mode">form</field>
+            <field name="res_model">expenditure.ledger.excel.extended1</field>
+            <field name="target">new</field>
+        </record>
+
+
+        <!--        <record id="expenditure_ledger_wizard_form_view1" model="ir.ui.view">-->
+        <record id="expenditure_ledger1_form_view" model="ir.ui.view">
+            <field name="name">expenditure.ledger1.form</field>
+            <field name="model">expenditure.ledger1</field>
+            <field name="arch" type="xml">
+
+                <!--            <field name="name">expenditure.ledger.wiz.form.view</field>-->
+                <!--            <field name="model">expenditure.ledger.wiz</field>-->
+                <!--            <field name="arch" type="xml">-->
+                <form string="Expenditure Ledger">
+                    <group>
+                        <group>
+                            <field name="start_date" required="1"/>
+                        </group>
+                        <group>
+                            <field name="end_date" required="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="expenditure_excel_report" string="Print Excel" type="object"
+                                class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_highlight" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_expenditure_ledger1" model="ir.actions.act_window">
+            <field name="name">Expenditure Ledger Dates</field>
+            <field name="res_model">expenditure.ledger1</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="expenditure_ledger250"
+                  action="action_expenditure_ledger1"
+                  name="Expenditure Ledger1"
+                  parent="account.menu_finance_entries_accounting_ledgers"
+                  sequence="4"/>
+
+
+        <!--        <record id="expenditure_ledger1_form_view" model="ir.ui.view">-->
+        <!--            <field name="name">expenditure.ledger1.form</field>-->
+        <!--            <field name="model">expenditure.ledger1</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <form>-->
+        <!--                    <sheet>-->
+        <!--                        <group>-->
+        <!--                            <field name="expenditure_ledger1"/>-->
+        <!--                        </group>-->
+        <!--                    </sheet>-->
+        <!--                </form>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <!--        <record id="action_expenditure_ledger1" model="ir.actions.act_window">-->
+        <!--            <field name="name">Expenditure Ledger1</field>-->
+        <!--            <field name="type">ir.actions.act_window</field>-->
+        <!--            <field name="res_model">expenditure.ledger1</field>-->
+        <!--            <field name="view_mode">form</field>-->
+        <!--            <field name="help" type="html">-->
+        <!--                <p class="o_view_nocontent_smiling_face">-->
+        <!--                    No unavailable list found.-->
+        <!--                </p>-->
+        <!--                <p>-->
+        <!--                    Once the list get's started, you can review and compare them.-->
+        <!--                </p>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <!--        <menuitem id="expenditure_ledger250"-->
+        <!--                  action="action_expenditure_ledger1"-->
+        <!--                  name="Expenditure Ledger1"-->
+        <!--                  parent="account.menu_finance_entries_accounting_ledgers"-->
+        <!--                  sequence="4"/>-->
+    </data>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="warning_message" model="ir.ui.view">
+            <field name="name">warning.message.form</field>
+            <field name="model">warning.message</field>
+            <field name="arch" type="xml">
+                <form string="Warning Message">
+                    <field name="name" readonly="1"/>
+                    <footer>
+                       <button string="Close" class="oe_highlight" special="cancel"/>
+                    </footer>
+               </form>
+            </field>
+        </record>
+    </data>
+</odoo>

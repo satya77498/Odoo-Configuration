@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+<!--        <record id="salesperson_planing_tree_view" model="ir.ui.view">-->
+<!--            <field name="name">salesperson.planing.tree</field>-->
+<!--            <field name="model">salesperson.planing</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree>-->
+<!--                    <field name="employee"/>-->
+<!--                    <field name="location"/>-->
+<!--                    <field name="choose_role"/>-->
+<!--                    <field name="appointment_date"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="salesperson_planing_employee_tree_view" model="ir.ui.view">
+            <field name="name">salesperson.employee.form</field>
+            <field name="model">salesperson.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Weight/number ratio" editable="bottom">
+                    <field name="employee"/>
+                    <field name="color" widget="color"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="salesperson_planing_address_tree_view" model="ir.ui.view">
+            <field name="name">salesperson.location.form</field>
+            <field name="model">salesperson.location</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="location"/>
+                    <field name="country"/>
+                    <field name="state"/>
+                    <field name="city"/>
+                    <field name="zip"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="salesperson_planing_role_tree_view" model="ir.ui.view">
+            <field name="name">salesperson.role.form</field>
+            <field name="model">salesperson.role</field>
+            <field name="arch" type="xml">
+                <tree string="Weight/number ratio" editable="bottom">
+                    <field name="choose_role"/>
+                    <field name="employee" widget="many2many_tags"/>
+                    <field name="color" widget="color"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="salesperson_planing_address_form_view" model="ir.ui.view">
+            <field name="name">salesperson.location.form</field>
+            <field name="model">salesperson.location</field>
+            <field name="arch" type="xml">
+                <form>
+                    <shet>
+                        <div class="oe_title pr-0">
+                            <h1 class="d-flex flex-row justify-content-between">
+                                <field name="location" class="o_task_name text-truncate" placeholder="Location Name"/>
+                            </h1>
+                        </div>
+
+                        <group>
+                            <group>
+                                <span class="o_from_label o_td_label" name="address_name">
+                                    <b>Address</b>
+                                </span>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street" class="o_address_street"/>
+                                    <field name="street1" placeholder="Street2" class="o_address_street"/>
+                                    <field name="country" placeholder="Country" class="o_address_country"/>
+                                    <field name="state" placeholder="State" class="o_address_state"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                </div>
+                            </group>
+                        </group>
+                    </shet>
+                </form>
+            </field>
+        </record>
+
+        <!--        calendar view-->
+        <!--        <record id="salesperson_planing_calendar_view" model="ir.ui.view">-->
+        <!--            <field name="name">salesperson.planing.calendar</field>-->
+        <!--            <field name="model">salesperson.planing</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <calendar date_start="appointment_date">-->
+        <!--                    <field name="employee"/>-->
+        <!--                    <field name="location"/>-->
+        <!--                    <field name="appointment_date"/>-->
+        <!--                </calendar>-->
+        <!--            </field>-->
+        <!--        </record>-->
+        <!--        calendar view-->
+
+        <!--        Gantt View-->
+        <!--        <record id="salesperson_planing_gantt_view" model="ir.ui.view">-->
+        <!--            <field name="name">salesperson.planing.gantt</field>-->
+        <!--            <field name="model">salesperson.planing</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <gantt string="Gantt View" date_stop="appointment_end_date" date_start="appointment_date">-->
+        <!--                    <field name="name"/>-->
+        <!--                    <field name="appointment_date"/>-->
+        <!--                </gantt>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <!--        <record id="salesperson_planing_gantt_view" model="ir.ui.view">-->
+        <!--           <field name="name">salesperson.planing.gantt</field>-->
+        <!--           <field name="model">salesperson.planing</field>-->
+        <!--           <field name="arch" type="xml">-->
+        <!--               <gantt-->
+        <!--                       date_start="appointment_date"-->
+        <!--                       date_stop="appointment_end_date"-->
+        <!--                       default_group_by="name"-->
+        <!--                       color="employee_id"-->
+        <!--                       scales="day,week,month,year"-->
+        <!--                       precision="{'day': 'hour:full', 'week': 'day:full', 'month': 'day:full', 'year': 'day:full'}"-->
+        <!--                       thumbnails="{'employee_id': 'image_128'}">-->
+        <!--                   <field name="employee"/>-->
+        <!--                   <templates>-->
+        <!--                       <div t-name="gantt-popover" class="container-fluid">-->
+        <!--                           <div class="row no-gutters">-->
+        <!--                               <div class="col">-->
+        <!--                                   <ul class="pl-1 mb-0">-->
+        <!--                                       <li>-->
+        <!--                                           <strong>Start Date:</strong>-->
+        <!--                                           <t t-esc="userTimezoneStartDate.format('YYYY-MM-DD hh:mm:ss A')"/>-->
+        <!--                                       </li>-->
+        <!--                                       <li>-->
+        <!--                                           <strong>Stop Date:</strong>-->
+        <!--                                           <t t-esc="date_to.format('YYYY-MM-DD hh:mm:ss A')"/>-->
+        <!--                                       </li>-->
+        <!--                                   </ul>-->
+        <!--                               </div>-->
+        <!--                           </div>-->
+        <!--                       </div>-->
+        <!--                   </templates>-->
+        <!--               </gantt>-->
+        <!--           </field>-->
+        <!--        </record>-->
+        <!--        Gantt View-->
+
+        <!--        <record id="salesperson_planing_form_view" model="ir.ui.view">-->
+        <!--            <field name="name">salesperson.planing.form</field>-->
+        <!--            <field name="model">salesperson.planing</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <form>-->
+        <!--                    <header>-->
+        <!--                        <field name="state" widget="statusbar"/>-->
+        <!--                    </header>-->
+        <!--                    <shet>-->
+
+        <!--                        <group>-->
+        <!--                            <group>-->
+        <!--                                <field name="employee"/>-->
+        <!--                                <field name="location"/>-->
+        <!--                                <field name="choose_role"/>-->
+        <!--                            </group>-->
+        <!--                        </group>-->
+
+        <!--                        <group>-->
+        <!--                            <group>-->
+        <!--                                <field name="appointment_date"/>-->
+        <!--                            </group>-->
+        <!--                        </group>-->
+
+        <!--                    </shet>-->
+        <!--                </form>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <record id="salesperson_planing_action" model="ir.actions.act_window">
+            <field name="name">Salesperson Planing</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salesperson.planing</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No unavailable list found.
+                </p>
+            </field>
+        </record>
+
+        <record id="salesperson_planing_employee_action" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salesperson.employee</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Employee Name found.
+                </p>
+            </field>
+        </record>
+
+        <record id="salesperson_planing_address_action" model="ir.actions.act_window">
+            <field name="name">Address</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salesperson.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Address found.
+                </p>
+            </field>
+        </record>
+
+        <record id="salesperson_planing_role_action" model="ir.actions.act_window">
+            <field name="name">Role</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salesperson.role</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Role found.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="salesperson_planing_root_menu" name="Salesperson Planing" sequence="3"
+                  web_icon="salesperson_planing,static/description/icon.png"/>
+
+        <!--Schedule-->
+        <menuitem id="salesperson_planing_sub_menu1" name="Schedule" parent="salesperson_planing_root_menu"
+                  sequence="1"/>
+        <!--Schedule-->
+
+        <menuitem id="salesperson_planing_sub_menu2" name="Planing" parent="salesperson_planing_root_menu"
+                  sequence="2"/>
+
+        <!--Configuration-->
+        <menuitem id="salesperson_planing_sub_menu3" name="Configuration" parent="salesperson_planing_root_menu"
+                  sequence="3"/>
+
+        <menuitem id="salesperson_planing_child_menu3" name="Employee" parent="salesperson_planing_sub_menu3"
+                  sequence="1" action="salesperson_planing_employee_action"/>
+
+        <menuitem id="salesperson_planing_child_menu4" name="Location" parent="salesperson_planing_sub_menu3"
+                  sequence="2" action="salesperson_planing_address_action"/>
+
+        <menuitem id="salesperson_planing_child_menu5" name="Role" parent="salesperson_planing_sub_menu3" sequence="3"
+                  action="salesperson_planing_role_action"/>
+    </data>
+</odoo>

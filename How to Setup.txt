@@ -1,0 +1,12 @@
+====>>>>>select a drive and create a new folder( in This folder save odoo.conf which is present in D:\Odoo\server (Check your local disk))
+====>>>>>in this folder create another new folder(in this filder all odoo program files are saved) 
+====>>>>>If any problem Occur copy same as my file 
+
+====>>>>>after finish all this setup then configure in pycharm same as shown in my Video 
+
+====>>>>>then set pgsql bin folder (as shown in video)
+
+#-----------------------------------------------------------------------------------
+
+====>>>>>After finish all this setup step we jump to write and create new module (I am define Some modele u can give referance)
+====>>>>>if any problem occur to setup pgsql follow my video 

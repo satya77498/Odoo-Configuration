@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Inherit Sales-->
+
+    <record id="sale_order_inherit" model="ir.ui.view">
+        <field name="name">sale.order.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="job_name"/>
+            </field>
+        </field>
+    </record>
+
+<!--    Inherit  inventory -->
+    <record id="alternative_unit_inherit" model="ir.ui.view">
+        <field name="name">alternative.unit.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <field name="uom_po_id" position="after">
+                <field name="alternative_unit"/>
+            </field>
+            <field name="alternative_unit" position="after">
+                <field name="conversion_unit"/>
+            </field>
+        </field>
+    </record>
+
+<!--    Inherit and modify  inventory -->
+
+    <record id="modify_unit_inherit" model="ir.ui.view">
+        <field name="name">modify.unit.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+
+            <field name="company_id" position="attributes">
+                <field name="uom_id"/>
+            </field>
+
+            <field name="uom_po_id" position="attributes">
+                <field name="uom_po_id"/>
+            </field>
+
+        </field>
+    </record>
+
+
+<!--    Inherit Notebook Sales-->
+
+    <record id="sale_notebook_inherit" model="ir.ui.view">
+        <field name="name">sale.order.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Add Your Notes" name="add_your_notes">
+                    <field name="user_id"/>
+                    <field name="team_id"/>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+    <data>
+        <record id="job_order_tree_view" model="ir.ui.view">
+            <field name="name">job.order.tree</field>
+            <field name="model">job.order</field>
+            <field name="arch" type="xml">
+               <tree>
+                   <field name="name"/>
+                   <field name="email"/>
+                   <field name="phone"/>
+                   <field name="gender"/>
+                   <field name="experience"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="job_order_kanban_view" model="ir.ui.view">
+            <field name="name">job.order.kanban</field>
+            <field name="model">job.order</field>
+            <field name="arch" type="xml">
+                 <kanban>
+                     <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            Name:
+                                            <field name="name"/>
+                                        </li>
+                                        <li>
+                                            Email:
+                                            <field name="email"/>
+                                        </li>
+                                        <li>
+                                            Phone:
+                                            <field name="phone"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                     </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="job_order_form_view" model="ir.ui.view">
+            <field name="name">job.order.form</field>
+            <field name="model">job.order</field>
+            <field name="arch" type="xml">
+                 <form>
+
+                     <sheet>
+                         <div class="oe_button_box" name="button_box">
+                            <button name="create_document" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field string="Create Documents" name="doc_count" widget="statinfo" />
+                            </button>
+                             <button name="manage_document" type="object" class="oe_stat_button" icon="fa-calendar">
+                                 <field string="Manage Document" name="doc_count" widget="statinfo" />
+                             </button>
+                             <button name="delete_document" type="object" class="oe_stat_button" icon="fa-pencil-square-o">
+                                 <field string="Delete Document" name="doc_count" widget="statinfo"/>
+                             </button>
+
+                        </div>
+
+
+                         <div class="oe_title">
+                            <h1>
+                                <field name="slno" readonly="1" />
+                            </h1>
+                         </div>
+
+                         <div class="oe_button_box " name="">
+                         </div>
+
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="email"/>
+                                    <field name="phone"/>
+                                </group>
+
+                                <group>
+                                    <field name="gender"/>
+                                    <field name="experience"/>
+                                </group>
+
+                                <group>
+                                    <field name="language" widget="many2many_tags"/>
+                                    <field name="dist"/>
+                                </group>
+                                <group>
+                                    <field name="notes"></field>
+                                </group>
+                            </group>
+                         <notebook>
+                            <page string="Job Company" name="job company">
+                                <group>
+                                    <field name="job_company_line" widget="selection_and_note_one2many" nolabel="1">
+                                        <tree editable = "bottom">
+                                            <field name="job_company_ids" invisible="1"/>
+                                            <field name="product_id" width="5"/>
+                                            <field name="qty" width="5"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <group>
+                                                    <field name="product_id"/>
+                                                </group>
+                                                <group>
+                                                    <field name="qty"/>
+                                                </group>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                         </notebook>
+                     </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_job_order" model="ir.actions.act_window">
+            <field name="name">Job Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">job.order</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No unavailable list found.
+                </p>
+                <p>
+                    Once the list get's started, you can review and compare them.
+                </p>
+            </field>
+        </record>
+
+<!--        Main Menu&ndash;&gt;-->
+        <menuitem id="job_order_menu_root" name="Job Order" sequence="2" web_icon="job_order,static/description/icon.png"/>
+<!--         Sub Menu-->
+        <menuitem id="job_order_sub_menu" parent="job_order_menu_root" name="Home" sequence="1" action="action_job_order"/>
+        <menuitem id="job_order_sub_menu1" parent="job_order_menu_root" name="Print Report" sequence="2" action="action_job_order"/>
+        <menuitem id="job_order_sub_menu2" parent="job_order_menu_root" name="Config" sequence="3" action=""/>
+
+    </data>
+</odoo>

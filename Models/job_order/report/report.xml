@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="job_order_detail_pdf" model="ir.actions.report">
+        <field name="name">Print PDF</field>
+        <field name="model">job.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">job_order.job_order_pdf</field>
+        <field name="report_file">job_order.job_order_pdf</field>
+        <field name="binding_model_id" ref= "model_job_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="job_order_detail_excel" model="ir.actions.report">
+        <field name="name">Print excel</field>
+        <field name="model">job.order</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">job_order.job_order_excel_id</field>
+        <field name="report_file">job_order.job_order_excel_id</field>
+        <field name="binding_model_id" ref= "model_job_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

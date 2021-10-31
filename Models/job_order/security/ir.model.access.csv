@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_job_order,access_job_order,model_job_order,,1,1,1,1
+access_job_company_line,access_job_company_line,model_job_company_line,,1,1,1,1
+access_conversion_unit,access_conversion_unit,model_conversion_unit,,1,1,1,1
+access_expenditure_ledger1,access_expenditure_ledger1,model_expenditure_ledger1,,1,1,1,1
+access_expenditure_ledger_excel_extended1,access_expenditure_ledger_excel_extended1,model_expenditure_ledger_excel_extended1,,1,1,1,1
+access_warning_message,access_warning_message,model_warning_message,,1,1,1,1
